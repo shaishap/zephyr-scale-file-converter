@@ -317,6 +317,8 @@ module.exports = {
         try {
             if(!text) return;
             if(trim(text) === '') return;
+            var re = /\[\d+\](http[\S]+\w)----[-]+----\[\d+\]\s([\S]+)\s/g;
+            text = text.replace(re,' <a href="$1">$2</a>');
             return trim(text);
         } catch(e) {
             console.log('Error trimming text: ', text);
